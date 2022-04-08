@@ -211,7 +211,7 @@ int main()
 	//char pat[] = "the";
 	int prime = 101; // A prime number
 
-	search(pat, txt, prime);
+	search(prime);
 
 	return 0;
 }
