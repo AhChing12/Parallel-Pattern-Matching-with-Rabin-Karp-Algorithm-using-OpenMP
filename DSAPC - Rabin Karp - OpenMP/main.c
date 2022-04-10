@@ -124,7 +124,7 @@ void search(int prime)
 	for (int k = 0; k < patLength; k++) {
 		patHash = (d * patHash + pat[k]) % prime;
 	}
-	double start_time = omp_get_wtime();
+	//double start_time = omp_get_wtime();
 	start_t = clock();
 #pragma omp parallel
 	{
@@ -160,9 +160,9 @@ void search(int prime)
 					txtHash = (txtHash + prime);
 				}
 			}
-			
 
-			
+
+
 			// Check the hash values of current window of text and pattern. 
 			if (patHash == txtHash) {
 				int j;
@@ -172,11 +172,11 @@ void search(int prime)
 					if (txt[i + j] != pat[j]) //increment j if both character same. Else, stop looping
 						break;
 				}
-				
+
 
 				if (j == patLength) {//if all characters same
 					subMatch[subMatchIndex++] = i;
-					printf("Pattern found at index %d--------- \n", i);//first index of text window where pattern found
+					printf("Pattern found at index %d \n", i);//first index of text window where pattern found
 				}
 			}
 		}
@@ -189,14 +189,14 @@ void search(int prime)
 		}
 	}
 	end_t = clock();
-	double end_time = omp_get_wtime();
+	//double end_time = omp_get_wtime();
 
 	printf("Match at index: ");
 	for (int i = 0; i < matchIndex; i++) {
 		printf("%d, ", match[i]);
 	}
-	printf("Work took %f seconds\n", end_time - start_time);//this is more precise, more precision
-	printf("Work took %f seconds by time()\n", (double)(end_t - start_t) / CLOCKS_PER_SEC);
+	//printf("Work took %f seconds\n", end_time - start_time);//this is more precise, more precision
+	printf("\nWork took %f seconds\n", (double)(end_t - start_t) / CLOCKS_PER_SEC);
 }
 
 /* Driver program to test above function */
@@ -215,4 +215,3 @@ int main()
 
 	return 0;
 }
-

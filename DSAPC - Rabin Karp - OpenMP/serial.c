@@ -95,7 +95,7 @@ void search(char pat[], char txt[], int prime)
 		// and pattern. If the hash values match then only
 		// check for characters on by one
 		if (patHash == txtHash) {
-			printf("SAME HASH position:%d", i);
+			//printf("SAME HASH position:%d. ", i);
 			/* Check for characters one by one */
 			for (j = 0; j < patLength; j++) {
 				if (txt[i + j] != pat[j]) //increment j if both character same. Else, stop looping
@@ -110,7 +110,7 @@ void search(char pat[], char txt[], int prime)
 		// Calculate hash value for next window of text: Remove
 		// leading digit, add trailing digit
 		if (i < txtLength - patLength) { //if slided pattern haven't reach end of main text
-			printf("d:%d txtHash:%d txt[i]:%d h:%d txt[i+patLength]:%d prime:%d", d, txtHash, txt[i], h, txt[i + patLength], prime);
+			//printf("d:%d txtHash:%d txt[i]:%d h:%d txt[i+patLength]:%d prime:%d", d, txtHash, txt[i], h, txt[i + patLength], prime);
 			txtHash = (d * (txtHash - txt[i] * h) + txt[i + patLength]) % prime;
 
 			// We might get negative value of txtHash, converting it
@@ -121,7 +121,7 @@ void search(char pat[], char txt[], int prime)
 		printf("i:%d hash: %d\n", i, txtHash);
 	}
 	end_t = clock();
-	printf("Work took %f seconds by time()\n", (double)(end_t - start_t) / CLOCKS_PER_SEC);
+	printf("Work took %f seconds\n", (double)(end_t - start_t) / CLOCKS_PER_SEC);
 }
 
 /* Driver program to test above function */
